@@ -6,4 +6,4 @@
     "author_name": "Author",
     "author_email": "email@email.com",
     "year": "{{ cookiecutter.year }}"
-  }
+}
