@@ -1,0 +1,8 @@
+{
+    "repository_name": "Aind.Behavior.Cookiecutter.Template",
+    "package_name": "aind_behavior_cookiecutter_template",
+    "project_name": "aind-behavior-cookiecutter-template",
+    "project_short_description": "Aind Behavior Cookiecutter Template",
+    "author_name": "Author",
+    "author_email": "email@email.com"
+}
