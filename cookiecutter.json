@@ -1,9 +1,9 @@
 {
     "repository_name": "Aind.Behavior.Cookiecutter.Template",
-    "package_name": "{{ cookiecutter.package_name }}",
-    "project_name": "{{ cookiecutter.project_name }}",
+    "package_name": "{{ cookiecutter.repository_name.replace('.', '_').lower() }}",
+    "project_name": "{{ cookiecutter.package_name.replace('_', '-') }}",
     "project_short_description": "Aind Behavior Cookiecutter Template",
     "author_name": "Author",
     "author_email": "email@email.com",
     "year": "{{ cookiecutter.year }}"
-}
+  }
