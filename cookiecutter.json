@@ -8,6 +8,7 @@
     "author_email": "email@email.com",
     "year": "2025",
     "_copy_without_render": [
-        ".github/workflows/*"
+        ".github/workflows/*",
+        "docs/*.svg","docs/*.ico"
     ]
 }
