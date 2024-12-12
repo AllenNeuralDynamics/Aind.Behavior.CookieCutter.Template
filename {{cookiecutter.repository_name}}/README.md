@@ -8,8 +8,6 @@
 
 {{ cookiecutter.project_description }}
 
-A repository for the Force Foraging task.
-
 ## General instructions
 
 This repository follows the project structure laid out in the [Aind.Behavior.Services repository](https://github.com/AllenNeuralDynamics/Aind.Behavior.Services).
