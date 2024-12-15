@@ -12,7 +12,6 @@ Bonsai.exe.WebView2
 *.exe.settings
 *.bonsai.layout
 local
-.venv
 *.snl
 
 # Byte-compiled / optimized / DLL files
@@ -88,3 +87,6 @@ ipython_config.py
 
 # ruff
 .ruff_cache/
+
+# venv files 
+.venv
