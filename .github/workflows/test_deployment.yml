@@ -39,4 +39,4 @@ jobs:
         run: pip install cookiecutter
 
       - name: Test Cookiecutter template
-        run: cookiecutter ${{ matrix.template-dir }} --no-input
+        run: cookiecutter ${{ matrix.template-dir }} --no-input -v -f -o ./test_output
