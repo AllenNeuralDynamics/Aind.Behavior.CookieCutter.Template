@@ -5,17 +5,27 @@ A cookiecutter template for Aind.Behavior repositories
 
 This repository follows the project structure laid out in the [Aind.Behavior.Services repository](https://github.com/AllenNeuralDynamics/Aind.Behavior.Services).
 
+## Available templates
+
+We currently maintain the following templates:
+
+- `generic`: A generic template for Aind.Behavior repositories.
+- `curriculum`: A template for Aind.Behavior repositories that implement a behavior curriculum for training.
+
 ## Getting Started
 
-1. Install [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html) if you haven't already.
+0. Pick your template from the list above
+1. Install [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/installation.html).
    1. `pip install cookiecutter`
-2. Run `cookiecutter https://github.com/AllenNeuralDynamics/Aind.Behavior.CookieCutter.Template` in the directory where you want to create your new repository.
+2. Run `cookiecutter https://github.com/AllenNeuralDynamics/Aind.Behavior.CookieCutter.Template --directory="<template_name>"` in the directory where you want to create your new repository.
 3. Follow the prompts to fill in the repository name, description, etc.
 4. Push the new repository to GitHub.
 
 ## Manual steps
 
-Most of these steps are optional.
+Some steps are template-specific. These are outlined in the generated `README.md` file in the new repository.
+
+The following steps are generally common to all repositories and are mostly optional.
 
 ### Add topics to the repository
 
