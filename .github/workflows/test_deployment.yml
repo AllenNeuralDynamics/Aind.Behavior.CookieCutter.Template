@@ -14,8 +14,9 @@ jobs:
       - name: Find Cookiecutter templates
         id: set-templates
         run: |
-          templates=$(find . -name 'cookiecutter.json' -exec dirname {} \; | paste -sd "," -)
-          echo "::set-output name=templates::$templates"
+            templates=$(find . -name 'cookiecutter.json' -exec dirname {} \; | paste -sd "," -)
+            echo "Found templates: $templates"
+            echo "templates=$templates" >> $GITHUB_OUTPUT
 
   test-templates:
     needs: find-templates
