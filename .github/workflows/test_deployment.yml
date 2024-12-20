@@ -35,8 +35,9 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Cookiecutter
-        run: pip install cookiecutter
-
-      - name: Test Cookiecutter template
-        run: cookiecutter ${{ matrix.template-dir }} --no-input -v -f -o ./test_output
+      - name: Use Cookiecutter
+        uses: andrewthetechie/gha-cookiecutter@main
+        with:
+            template: ${{ matrix.template-dir }}
+            overwrite: true
+            acceptHooks: true
