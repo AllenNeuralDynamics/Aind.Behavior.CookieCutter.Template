@@ -10,7 +10,6 @@ This repository follows the project structure laid out in the [Aind.Behavior.Ser
 We currently maintain the following templates:
 
 - `generic`: A generic template for Aind.Behavior repositories.
-- `curriculum`: A template for Aind.Behavior repositories that implement a behavior curriculum for training.
 
 ## Getting Started
 
