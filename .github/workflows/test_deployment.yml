@@ -16,14 +16,15 @@ jobs:
         run: |
             templates=$(find . -name 'cookiecutter.json' -exec dirname {} \; | paste -sd "," -)
             echo "Found templates: $templates"
-            echo "templates=$templates" >> $GITHUB_OUTPUT
+            templates_json=$(echo $templates | jq -R -s -c 'split(",")')
+            echo "templates=$templates_json" >> $GITHUB_OUTPUT
 
   test-templates:
     needs: find-templates
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        template-dir: ${{ fromJson(needs.find-templates.outputs.templates) }}
+        matrix:
+            template-dir: ${{ fromJson(needs.find-templates.outputs.templates) }}
 
     steps:
       - name: Checkout repository
