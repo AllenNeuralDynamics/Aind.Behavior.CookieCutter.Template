@@ -1,0 +1,40 @@
+name: Test Cookiecutter Templates
+
+on: [push, pull_request]
+
+jobs:
+  find-templates:
+    runs-on: ubuntu-latest
+    outputs:
+      templates: ${{ steps.set-templates.outputs.templates }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Find Cookiecutter templates
+        id: set-templates
+        run: |
+          templates=$(find . -name 'cookiecutter.json' -exec dirname {} \; | paste -sd "," -)
+          echo "::set-output name=templates::$templates"
+
+  test-templates:
+    needs: find-templates
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        template-dir: ${{ fromJson(needs.find-templates.outputs.templates) }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Install Cookiecutter
+        run: pip install cookiecutter
+
+      - name: Test Cookiecutter template
+        run: cookiecutter ${{ matrix.template-dir }} --no-input
