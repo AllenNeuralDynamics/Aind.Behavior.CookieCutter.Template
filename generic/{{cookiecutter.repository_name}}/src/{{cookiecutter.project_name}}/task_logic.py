@@ -13,6 +13,6 @@ class {{ cookiecutter.class_suffix }}Parameters(TaskParameters):
 class {{ cookiecutter.class_suffix }}TaskLogic(AindBehaviorTaskLogicModel):
     """Olfactometer operation control model that is used to run a calibration data acquisition workflow"""
 
-    name: str = Field(default="{{ cookiecutter.repository_name.replace('.', '') }}", title="Name of the task logic", frozen=True)
+    name: Literal["{{ cookiecutter.repository_name.replace('.', '') }}"] = Field(default="{{ cookiecutter.repository_name.replace('.', '') }}", title="Name of the task logic", frozen=True)
     version: Literal[__version__] = __version__
     task_parameters: {{ cookiecutter.class_suffix }}Parameters = Field(..., title="Task parameters", validate_default=True)
