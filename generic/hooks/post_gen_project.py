@@ -1,3 +1,12 @@
+import os
+
+
+def delete_files(root: str, filename: str):
+    for root, dirs, files in os.walk(root):
+        for file in files:
+            if file == filename:
+                os.remove(os.path.join(root, file))
+
 
 def pascal_to_snake_case(s: str) -> str:
     result = ""
@@ -39,6 +48,9 @@ json-schemas.rig
 
 def main():
 
+    delete_files(".", ".gitkeep")
+    
+
     with open("docs/json-schemas.task_logic.rst", "a") as f:
         f.write(task_logic_template)
 
@@ -46,6 +58,8 @@ def main():
         f.write(rig_template)
 
     print("Project initialized!")
+
+
 
 
 
