@@ -46,10 +46,9 @@ json-schemas.rig
 
 """
 
-def main():
 
+def main():
     delete_files(".", ".gitkeep")
-    
 
     with open("docs/json-schemas.task_logic.rst", "a") as f:
         f.write(task_logic_template)
@@ -58,9 +57,6 @@ def main():
         f.write(rig_template)
 
     print("Project initialized!")
-
-
-
 
 
 if __name__ == "__main__":
