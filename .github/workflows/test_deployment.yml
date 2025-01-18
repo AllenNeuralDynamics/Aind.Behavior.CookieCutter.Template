@@ -1,6 +1,12 @@
 name: Test Cookiecutter Templates
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   find-templates:
@@ -35,9 +41,14 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Use Cookiecutter
+      - name: Run Cookiecutter
         uses: andrewthetechie/gha-cookiecutter@main
         with:
             template: ${{ matrix.template-dir }}
             overwrite: true
             acceptHooks: true
+
+      - name: List files in output directory
+        run: |
+          echo "Listing files in output directory: ${{ steps.run-cookiecutter.outputs.outputDir }}"
+          find ${{ steps.run-cookiecutter.outputs.outputDir }} -type f -exec ls -lR {} \;
