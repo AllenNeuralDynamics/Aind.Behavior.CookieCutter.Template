@@ -1,36 +1,34 @@
 from pathlib import Path
 
 import aind_behavior_experiment_launcher.launcher.behavior_launcher as behavior_launcher
-from aind_behavior_experiment_launcher.apps.app_service import BonsaiApp
+from aind_behavior_experiment_launcher.apps import AindBehaviorServicesBonsaiApp
 from aind_behavior_services.session import AindBehaviorSessionModel
+from pydantic_settings import CliApp
 
 from {{ cookiecutter.package_name }}.rig import {{ cookiecutter.class_suffix }}Rig
 from {{ cookiecutter.package_name }}.task_logic import {{ cookiecutter.class_suffix }}TaskLogic
 
 
-def make_launcher() -> behavior_launcher.BehaviorLauncher:
+def make_launcher(settings: behavior_launcher.BehaviorCliArgs) -> behavior_launcher.BehaviorLauncher:
     data_dir = r"C:/Data"
     srv = behavior_launcher.BehaviorServicesFactoryManager()
-    srv.attach_bonsai_app(BonsaiApp(Path(r"./src/main.bonsai")))
+    srv.attach_bonsai_app(AindBehaviorServicesBonsaiApp(Path(r"./src/main.bonsai")))
 
     return behavior_launcher.BehaviorLauncher(
         rig_schema_model={{ cookiecutter.class_suffix }}Rig,
         session_schema_model=AindBehaviorSessionModel,
         task_logic_schema_model={{ cookiecutter.class_suffix }}TaskLogic,
-        data_dir=data_dir,
-        config_library_dir=r"\\allen\aind\scratch\AindBehavior.db\{{ cookiecutter.class_suffix }}",
-        temp_dir=r"./local/.temp",
-        allow_dirty=False,
-        skip_hardware_validation=False,
-        debug_mode=False,
-        group_by_subject_log=True,
         services=srv,
-        validate_init=True,
+        settings=settings,
+        picker=behavior_launcher.DefaultBehaviorPicker(
+            config_library_dir=Path(r"\\allen\aind\scratch\AindBehavior.db\{{ cookiecutter.class_suffix }}")
+        ),
     )
 
 
 def main():
-    launcher = make_launcher()
+    args = CliApp().run(behavior_launcher.BehaviorCliArgs)
+    launcher = make_launcher(args)
     launcher.main()
     return None
 
