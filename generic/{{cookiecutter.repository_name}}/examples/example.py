@@ -3,7 +3,7 @@ import os
 
 from aind_behavior_services.session import AindBehaviorSessionModel
 from {{ cookiecutter.package_name}}.task_logic import {{ cookiecutter.class_suffix }}Parameters, {{ cookiecutter.class_suffix }}TaskLogic
-import {{ cookiecutter.package_name}}.rig import {{ cookiecutter.class_suffix }}Rig
+from {{ cookiecutter.package_name}}.rig import {{ cookiecutter.class_suffix }}Rig
 
 
 
